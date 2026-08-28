@@ -19,13 +19,21 @@
             align-items: center;
         }
 
+        /* Contenedor principal para alinear todo verticalmente */
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 350px;
+        }
+
         .alarm {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            max-width: 350px;
-            padding: 20px;
+            padding: 20px 0;
             border-bottom: 2px solid #000000;
         }
 
@@ -35,9 +43,9 @@
             transition: 0.3s;
         }
 
-        /* Texto blanco brillante al activarse (sin tonos amarillos/verdes) */
+        /* Texto blanco brillante al activarse */
         .text.active {
-            color: #080808;
+            color: #ffffff;
         }
 
         /* Botón desactivado */
@@ -64,7 +72,7 @@
             transition: 0.3s;
         }
 
-        /* Botón activado (únicamente este cambia a amarillo) */
+        /* Botón activado (amarillo) */
         .switch.active {
             background: #ffe16f;
         }
@@ -72,30 +80,40 @@
         .switch.active::after {
             left: 22px;
         }
+
+        /* Estilos para el logo/imagen debajo */
+        .logo-relax {
+            width: 60px; /* Puedes ajustar el tamaño aquí */
+            height: auto;
+            margin-top: 15px; /* Separación con la línea superior */
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="alarm">
+    <div class="container">
+        
+        <div class="alarm">
+            <div class="text" id="relaxText">
+                RELAX MODE
+            </div>
 
-        <div class="text" id="relaxText">
-            RELAX MODE
+            <div class="switch" onclick="activarRelax()"></div>
         </div>
 
-        <div class="switch" onclick="activarRelax()"></div>
+        <!-- AQUÍ PONES TU IMAGEN -->
+        <img src="logo.png" alt="Logo Relax" class="logo-relax">
 
     </div>
 
     <script>
         function activarRelax() {
-
             const boton = document.querySelector(".switch");
             const texto = document.querySelector("#relaxText");
 
             boton.classList.toggle("active");
             texto.classList.toggle("active");
-
         }
     </script>
 
