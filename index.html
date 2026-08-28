@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relax Mode</title>
+
+    <style>
+        body {
+            background: #FFE16F;
+            color: #222; /* Cambiado a un tono oscuro para contrastar con el fondo amarillo */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+            
+            /* Propiedades para centrar al medio de la pantalla */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .alarm {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 350px;
+            padding: 20px;
+            border-bottom: 2px solid #222;
+        }
+
+        .text {
+            font-size: 22px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        /* Texto verde cuando está activado */
+        .text.active {
+            color: #1e8e3e; /* Tono de verde ajustado para mejor visibilidad sobre amarillo */
+        }
+
+        /* Botón */
+        .switch {
+            width: 50px;
+            height: 30px;
+            background: #444;
+            border-radius: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* Circulito */
+        .switch::after {
+            content: "";
+            width: 26px;
+            height: 26px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            transition: 0.3s;
+        }
+
+        /* Botón activado */
+        .switch.active {
+            background: #30d158;
+        }
+
+        .switch.active::after {
+            left: 22px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="alarm">
+
+        <div class="text" id="relaxText">
+            RELAX MODE
+        </div>
+
+        <div class="switch" onclick="activarRelax()"></div>
+
+    </div>
+
+    <script>
+        function activarRelax() {
+
+            const boton = document.querySelector(".switch");
+            const texto = document.querySelector("#relaxText");
+
+            boton.classList.toggle("active");
+            texto.classList.toggle("active");
+
+        }
+    </script>
+
+</body>
+</html>
